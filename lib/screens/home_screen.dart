@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home-screen';
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Task Manager"), centerTitle: true,),
@@ -41,17 +42,40 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.lightBlue,
                 thickness: 1.2
               ),
-              SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
               TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
-                    borderSide: BorderSide(color: Colors.blue)
+                    borderSide: const BorderSide(color: Colors.blue)
                   ),
                   fillColor: Colors.white,
                   filled: true,
-                  hintText: "Enter task here",
+                  hintText: "Enter task",
                   hintStyle:  GoogleFonts.montserrat(),
+                ),
+              ),
+              SizedBox(height: 20.0,),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 200.0,
+                child: Row(
+                  children: [
+                    Container(
+                      width: (MediaQuery.of(context).size.width / 2) - 10,
+                      child: ElevatedButton(
+                        onPressed: () => print("reset pressed"),
+                        child: Text("RESET", style: GoogleFonts.montserrat()),
+                      ),
+                    ),
+                    Container(
+                      width: (MediaQuery.of(context).size.width / 2) - 10,
+                      child: ElevatedButton(
+                        onPressed: () => print("add pressed"),
+                        child: Text("ADD", style: GoogleFonts.montserrat()),
+                      ),
+                    )
+                  ],
                 ),
               )
             ]),
