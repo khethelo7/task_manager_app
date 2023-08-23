@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const routeName = '/home-screen';
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
 
-  const HomeScreen({super.key});
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var _taskController;
+
+  @override
+  void initState() {
+    super.initState();
+    _taskController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _taskController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +60,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 5.0),
               TextField(
+                controller: _taskController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -62,8 +81,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: (MediaQuery.of(context).size.width / 2) - 10,
                       child: ElevatedButton(
-                        // ignore: avoid_print
-                        onPressed: () => print("reset pressed"),
+                        onPressed: () => _taskController.text = '',
                         child: Text("RESET", style: GoogleFonts.montserrat()),
                       ),
                     ),
