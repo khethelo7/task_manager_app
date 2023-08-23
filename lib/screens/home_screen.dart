@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home-screen';
@@ -9,7 +10,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // ignore: prefer_typing_uninitialized_variables
   var _taskController;
+
+  void saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    
+  }
 
   @override
   void initState() {
@@ -89,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: (MediaQuery.of(context).size.width / 2) - 10,
                       child: ElevatedButton(
                         // ignore: avoid_print
-                        onPressed: () => print("add pressed"),
+                        onPressed: () => saveData(),
                         child: Text("ADD", style: GoogleFonts.montserrat()),
                       ),
                     )
