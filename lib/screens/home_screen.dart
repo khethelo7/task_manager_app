@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home-screen';
+
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Task Manager"), centerTitle: true,),
+      appBar: AppBar(title: const Text("Task Manager"), centerTitle: true,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -16,10 +18,6 @@ class HomeScreen extends StatelessWidget {
         ),
         ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
         backgroundColor: Colors.blue[200],
         onPressed: () => showModalBottomSheet(
           context: context,
@@ -34,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   Text("Add task", style: GoogleFonts.montserrat(color: Colors.white, fontSize: 20.0,)),
                   GestureDetector(
                     onTap: () => Navigator.of(context).pop(),
-                    child: Icon(Icons.close),
+                    child: const Icon(Icons.close),
                   ),
                 ]
               ),
@@ -55,22 +53,24 @@ class HomeScreen extends StatelessWidget {
                   hintStyle:  GoogleFonts.montserrat(),
                 ),
               ),
-              SizedBox(height: 20.0,),
+              const SizedBox(height: 20.0,),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 200.0,
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: (MediaQuery.of(context).size.width / 2) - 10,
                       child: ElevatedButton(
+                        // ignore: avoid_print
                         onPressed: () => print("reset pressed"),
                         child: Text("RESET", style: GoogleFonts.montserrat()),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: (MediaQuery.of(context).size.width / 2) - 10,
                       child: ElevatedButton(
+                        // ignore: avoid_print
                         onPressed: () => print("add pressed"),
                         child: Text("ADD", style: GoogleFonts.montserrat()),
                       ),
@@ -80,7 +80,11 @@ class HomeScreen extends StatelessWidget {
               )
             ]),
           )
-        )
+        ), 
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
